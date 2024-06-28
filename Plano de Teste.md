@@ -15,10 +15,10 @@ Cobrir a rota de /projects da  API de JSONs para Treinamento de Validações de 
 
 # Cobertura de critérios  de aceite
 
-**RF_001:** Usuarios devem efetuar a criacao do projeto;
-**RF_002:** Usuarios devem poder atualizar as informações do projeto;
-**RF_003:** Os campos devem ser preenchidos;
-**RF_004:** A data de término deve ser maior que a data atual;
+- **RF_001:** Usuarios devem efetuar a criacao do projeto;
+- **RF_002:** Usuarios devem poder atualizar as informações do projeto;
+- **RF_003:** Os campos devem ser preenchidos;
+- **RF_004:** A data de término deve ser maior que a data atual;
 
 
 
