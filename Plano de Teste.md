@@ -37,5 +37,5 @@ Cobrir a rota de /projects da  API de JSONs para Treinamento de Validações de 
 | CT_002 | POST   | Campos não preenchidos na hora do cadastro | Deve ser retornado status code 400,"message":"Dados inválidos fornecidos" |
 | CT_003 | GET   | Usuário faz a busca dos projetos existentes | Deve ser retornado status code 200 |
 | CT_004 | PUT   | Usuário atualiza informações do projeto | Deve ser retornado status code 200,"message": "Projeto atualizado com sucesso" |
-| CT_005 | DELETE | Usuário deleta projeto | Deve ser retornado status code 200, "message":"Dados inválidos fornecidos" |
+| CT_005 | DELETE | Usuário deleta projeto | Deve ser retornado status code 200, "message":"Projeto deletado com sucesso" |
 | CT_006 | POST   | Usuário faz cadastro de membro em projeto | Deve ser retornado status code 201,"message":"Membro adicionado com sucesso ao projeto" |
