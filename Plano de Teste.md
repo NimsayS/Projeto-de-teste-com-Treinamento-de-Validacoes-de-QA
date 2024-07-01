@@ -26,6 +26,7 @@ Cobrir a rota de /projects da  API de JSONs para Treinamento de Validações de 
 - **RF_009:** O usuário deve poder deletar membro de projeto;
 - **RF_010:** O usuário deve poder buscar membro por id do projeto;
 - **RF_011:** O usuário deve poder deletar membro pelo id do projeto e id do membro;
+- - **RF_011:** Os ID's não podem ser repetidos;
 
 
 # Testes Funcionais 
@@ -39,3 +40,5 @@ Cobrir a rota de /projects da  API de JSONs para Treinamento de Validações de 
 | CT_004 | PUT   | Usuário atualiza informações do projeto | Deve ser retornado status code 200,"message": "Projeto atualizado com sucesso" |
 | CT_005 | DELETE | Usuário deleta projeto | Deve ser retornado status code 200, "message":"Projeto deletado com sucesso" |
 | CT_006 | POST   | Usuário faz cadastro de membro em projeto | Deve ser retornado status code 201,"message":"Membro adicionado com sucesso ao projeto" |
+| CT_007 | GET    | Usuário faz busca de membros com o id do projeto | Deve ser retornado status code 200 e os membros do projeto |
+
