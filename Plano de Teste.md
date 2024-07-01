@@ -19,8 +19,13 @@ Cobrir a rota de /projects da  API de JSONs para Treinamento de Validações de 
 - **RF_002:** Usuarios devem poder atualizar as informações do projeto;
 - **RF_003:** Os campos devem ser preenchidos;
 - **RF_004:** A data de término deve ser maior que a data atual;
-
-
+- **RF_005:** O email deve ser válido;
+- **RF_006:** O usuário deve poder deletar projeto;
+- **RF_007:** O usuário deve poder colocar membros no projeto;
+- **RF_008:** O usuário deve poder buscar informações dos projetos;
+- **RF_009:** O usuário deve poder deletar membro de projeto;
+- **RF_010:** O usuário deve poder buscar membro por id do projeto;
+- **RF_011:** O usuário deve poder deletar membro pelo id do projeto e id do membro;
 
 
 # Testes Funcionais 
@@ -32,3 +37,5 @@ Cobrir a rota de /projects da  API de JSONs para Treinamento de Validações de 
 | CT_002 | POST   | Campos não preenchidos na hora do cadastro | Deve ser retornado status code 400,"message":"Dados inválidos fornecidos" |
 | CT_003 | GET   | Usuário faz a busca dos projetos existentes | Deve ser retornado status code 200 |
 | CT_004 | PUT   | Usuário atualiza informações do projeto | Deve ser retornado status code 200,"message": "Projeto atualizado com sucesso" |
+| CT_005 | DELETE | Usuário deleta projeto | Deve ser retornado status code 200, "message":"Dados inválidos fornecidos" |
+| CT_006 | POST   | Usuário faz cadastro de membro em projeto | Deve ser retornado status code 201,"message":"Membro adicionado com sucesso ao projeto" |
