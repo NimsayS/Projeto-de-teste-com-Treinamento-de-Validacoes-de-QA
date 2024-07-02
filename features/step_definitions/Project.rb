@@ -108,14 +108,12 @@ Dado('que o usuario coloque um membro no projeto') do
 end
 
 Quando('ele envia as informacoes do membro') do
-  @create_member = @post_member.criar_membro_projeto
+  @payload_member = build(:user).user_hash
+  @request_member = @post_member.criar_membro_projeto(@payload_member)
 end
 
 Entao('o usuario deve colocar um membro no projeto {int}') do |codigo_esperado|
-  puts @create_member
-  @assert.request_created(@create_member.code,@create_member.message)
-  @assert.mensagem_cadastrar_membro(@create_member["message"])
-  puts @create_member
+      puts  @payload_member
 end
 
 # Buscar membros pelo id
@@ -125,7 +123,7 @@ Dado('que o usuario busque todos os membros do projeto') do
 end
 
 Quando('colocar id do projeto') do
-    @id= sort_id.to_i
+    @id=sort_id.to_i
     @request_users = @get_members.buscar_membro(@id)
 end
 

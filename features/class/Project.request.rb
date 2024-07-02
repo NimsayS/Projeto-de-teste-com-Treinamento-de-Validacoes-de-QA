@@ -40,6 +40,15 @@ class Project_request
      }.to_json)
 end
 
+def buscar_membro(id)
+    response=Users.get("/projects/#{id}/members")
+    if response.code == 200  
+        response_body = JSON.parse(response.body)
+        puts "Corpo da resposta: #{response.body}"
+     end
+end
+
+
     def find_project
     response=Users.get('/projects')
         if response.code == 200  
@@ -66,25 +75,22 @@ end
         Users.delete('/projects/'+ id.to_s)
     end
 
-   def criar_membro_projeto
+=begin   def criar_membro_projeto
     nome = Faker::Name.name
     office = Faker::Name.name
     email = Faker::Internet.email(domain: 'example.com')
     Users.post('/member', body: {
         "name": nome,
         "office": office,
-        "projectId": 2,
+        "projectId": 1,
         "send_email": email
      }.to_json)
     end
-
-    def buscar_membro(id)
-        response=Users.get("/projects/#{id}/members")
-        if response.code == 200  
-            response_body = JSON.parse(response.body)
-            puts "Corpo da resposta: #{response.body}"
-         end
+=end
+   def criar_membro_projeto(user)
+    Users.post('/member', body: user.to_json)
     end
+   
 
     def deletar_membro
         Users.delete('/member/2/1')
