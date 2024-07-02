@@ -1,6 +1,6 @@
 # language: pt
 
-Funcionalidade: Usuarios 
+Funcionalidade: Projetos
 
 @cenario_criar_projeto
 Esquema do Cenario: Criar projeto
