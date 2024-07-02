@@ -48,12 +48,20 @@ end
           end
 end
         def buscar_client
-        Users.get('/clients')
+        response=Users.get('/clients')
+        if response.code == 200  
+          response_body = JSON.parse(response.body)
+          puts "Corpo da resposta: #{response.body}"
+       end
         
     end
        def buscar_produtos_luxo
-        Users.get('/financiamento-produtos')
+        response=Users.get('/financiamento-produtos')
+        if response.code == 200  
+          response_body = JSON.parse(response.body)
+          puts "Corpo da resposta: #{response.body}"
        end
+      end
 
        def criar_emprestimo
         emprestimo = Faker::Number.between(from: 1000, to: 10000)  
@@ -61,6 +69,7 @@ end
           "id_cliente": "4",
           "emprestimo": emprestimo
         }.to_json)
+      
 
         end
 

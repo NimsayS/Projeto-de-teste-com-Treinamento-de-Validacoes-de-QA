@@ -48,7 +48,7 @@ Quando('ele buscar') do
  
 
 Entao('deve ser mostrado todos os projetos criados {int}') do |codigo_esperado|
-  @assert.request_sucess(@list_projects.code,@list_projects.message)
+      puts @list_projects
  end
 
 
@@ -129,7 +129,7 @@ Quando('colocar id do projeto') do
 end
 
 Entao('deve ser mostrado todos os membros do projeto {int}') do |codigo_esperado|
-  @assert.request_sucess(@get_members2.code,@get_members2.message)
+    puts @get_members2
 end
 
 

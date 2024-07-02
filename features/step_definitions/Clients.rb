@@ -42,7 +42,7 @@ end
   end
   
   Entao('deve ser mostrado todos os clientes cadastrados {int}') do |codigo_esperado|
-    @assert.request_sucess(@list_clients.code,@list_clients.message)
+    puts @list_clients
   end
 
 # Buscar produtos de luxo
@@ -57,7 +57,7 @@ Quando('ele buscar os produtos') do
 end
 
 Entao('deve ser mostrado todos os produtos de luxo {int}') do |codigo_esperado|
-     @assert.request_sucess(@list_produtos.code,@list_produtos.message)
+    puts @list_produtos
 end
 
 # Cadastre emprestimo

@@ -41,7 +41,11 @@ class Project_request
 end
 
     def find_project
-        Users.get('/projects')
+    response=Users.get('/projects')
+        if response.code == 200  
+            response_body = JSON.parse(response.body)
+            puts "Corpo da resposta: #{response.body}"
+         end
     end
 
 
@@ -75,7 +79,11 @@ end
     end
 
     def buscar_membro
-        Users.get('/projects/1/members')
+        response=Users.get('/projects/1/members')
+        if response.code == 200  
+            response_body = JSON.parse(response.body)
+            puts "Corpo da resposta: #{response.body}"
+         end
     end
 
     def deletar_membro
