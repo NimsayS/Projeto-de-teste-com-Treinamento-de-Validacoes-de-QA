@@ -125,11 +125,12 @@ Dado('que o usuario busque todos os membros do projeto') do
 end
 
 Quando('colocar id do projeto') do
-    @get_members2= @get_members.buscar_membro
+    @id= sort_id.to_i
+    @request_users = @get_members.buscar_membro(@id)
 end
 
 Entao('deve ser mostrado todos os membros do projeto {int}') do |codigo_esperado|
-    puts @get_members2
+    puts @request_users
 end
 
 

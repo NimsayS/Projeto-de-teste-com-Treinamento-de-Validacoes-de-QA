@@ -78,8 +78,8 @@ end
      }.to_json)
     end
 
-    def buscar_membro
-        response=Users.get('/projects/1/members')
+    def buscar_membro(id)
+        response=Users.get("/projects/#{id}/members")
         if response.code == 200  
             response_body = JSON.parse(response.body)
             puts "Corpo da resposta: #{response.body}"
