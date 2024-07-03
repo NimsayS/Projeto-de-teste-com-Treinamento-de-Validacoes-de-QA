@@ -8,11 +8,12 @@ Dado('que o cliente se cadastre') do
   end
   
   Quando('ele envia as informacoes necessarias') do
-    @cadastrar_cliente = @post_client.criar_cliente
+    @payload_cliente = build(:create_client).criar_cliente_hash
+    @request_sucess = @post_client.criar_cliente(@payload_cliente)
   end
   
-  Entao('o cliente  deve efetuar o cadastro {int}') do |int|
-     puts @cadastrar_cliente
+  Entao('o cliente  deve efetuar o cadastro {int}') do |codigo_esperado|
+     puts @payload_cliente
   end
 
 # Cadastro errado de cliente
@@ -23,7 +24,8 @@ Dado('que o cliente se cadastre com informacoes erradas') do
 end
 
 Quando('ele envia as informacoes erradas2') do
-  @cadastrar_cliente_errado = @post_client_wrong.criar_cliente_errado
+  @payload_cliente_wrong = build(:create_client_wrong).criar_cliente_hash
+  @request_fail = @post_client_wrong.criar_cliente_errado(@payload_cliente_wrong)
 end
 
 Entao('o cliente nao deve efetuar o cadastro {int}') do |codigo_esperado|

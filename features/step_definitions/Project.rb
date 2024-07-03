@@ -8,12 +8,13 @@ Dado('que o usuario crie um projeto') do
  end
  
  Quando('ele envia as informacoes') do
-  @create_project2 = @post_url.create_project
+  @create_project = build(:create_project).create_project_hash
+  @request_sucess = @post_url.create_project(@create_project)
  
  end
  
  Entao('o usuario deve efetuar a criacao do projeto {int}') do |codigo_esperado|
-  puts @create_project2
+  puts @create_project
  end
 
 # Cadastrar projeto errado 
@@ -23,14 +24,13 @@ Dado('que o usuario crie um projeto2') do
 end
 
 Quando('ele envia as informacoes erradas') do
-  @create_project_wrong2 = @post2_url.create_project_wrong
+  @payload_wrong = build(:wrong).create_project_hash
+  @request_wrong = @post2_url.create_project_wrong(@payload_wrong)
 end
 
 Entao('o usuario não deve efetuar a criacao do projeto {int}') do |codigo_esperado|
-  puts @create_project_wrong2
-  @assert.request_fail(@create_project_wrong2.code,@create_project_wrong2.message)
-# @assert.mensagem_cadastrar_produto_fail(@create_project_wrong2["message"])
-  puts @create_project_wrong2
+
+        puts  @payload_wrong
 end
 
 # Pegar informações dos projetos

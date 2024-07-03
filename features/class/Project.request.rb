@@ -2,16 +2,8 @@ class Project_request
 
 
 
-   def create_project
-        nome = Faker::Name.name
-        leader = Faker::Name.name
-        description = Faker::Lorem.sentence
-        response=Users.post('/projects', body: {
-            "name": nome,
-            "leader": leader,
-            "description": description,
-            "endDate": "2025-06-30"
-         }.to_json)
+   def create_project(create_project)
+        response=Users.post('/projects', body:create_project.to_json)
          if response.code == 201  
             response_body = JSON.parse(response.body)
             $project_name = response_body['project']['name']
@@ -26,18 +18,23 @@ class Project_request
      
         
     end
+
     
 
-   def create_project_wrong
-    nome = Faker::Name.name
-    leader = Faker::Name.name
-    description = Faker::Lorem.sentence
-    Users.post('/projects', body: {
-        "name": "",
-        "leader": "",
-        "description": "",
-        "endDate": "2020-06-30"
-     }.to_json)
+def create_project_wrong(wrong)
+    
+    response=Users.post('/projects', body:wrong.to_json)
+    if response.code == 400  
+        response_body = JSON.parse(response.body)
+        $project_name = response_body['project']['name']
+        $project_id = response_body['project']['id']
+        puts "Corpo da resposta: #{response.body}"
+        
+      else
+        puts "Projeto foi criado. Código de status: #{response.code}"
+        puts "Corpo da resposta: #{response.body}"
+      end
+ 
 end
 
 def buscar_membro(id)
@@ -75,20 +72,21 @@ end
         Users.delete('/projects/'+ id.to_s)
     end
 
-=begin   def criar_membro_projeto
-    nome = Faker::Name.name
-    office = Faker::Name.name
-    email = Faker::Internet.email(domain: 'example.com')
-    Users.post('/member', body: {
-        "name": nome,
-        "office": office,
-        "projectId": 1,
-        "send_email": email
-     }.to_json)
-    end
-=end
+
    def criar_membro_projeto(user)
-    Users.post('/member', body: user.to_json)
+    response=Users.post('/member', body: user.to_json)
+    if response.code == 201  
+        response_body = JSON.parse(response.body)
+        $member_name = response_body['members']['name']
+        $members_id = response_body['members']['office']
+        puts "Membro #{$members_name} criado com sucesso!"
+        puts "Membro office: #{$members_id}"
+        puts "Corpo da resposta: #{response.body}"
+        
+      else
+        puts "Falha na criação do membro. Código de status: #{response.code}"
+      end
+ 
     end
    
 

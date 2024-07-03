@@ -1,18 +1,7 @@
 class Client_request
 
-    def criar_cliente
-        nome = Faker::Name.name
-        leader = Faker::Name.name
-        credit = Faker::Number.between(from: 1000, to: 10000)  
-        cpf = Faker::Number.between(from: 10000000000, to: 99999999999)  
-        response=Users.post('/clients', body: {
-            "name": nome,
-            "cpf": cpf,
-            "card": {
-              "flag": "MASTER",
-              "credit": credit
-            }
-          }.to_json)
+    def criar_cliente(create_client)
+        response=Users.post('/clients', body:create_client.to_json)
           if response.code == 201  
             response_body = JSON.parse(response.body)
             $client_name = response_body['client']['nome']
@@ -26,15 +15,9 @@ class Client_request
           end
 end
 
-    def criar_cliente_errado
-        response=Users.post('/clients', body: {
-            "name": "",
-            "cpf": "",
-            "card": {
-              "flag": "MASTER",
-              "credit": 0
-            }
-          }.to_json)
+
+    def criar_cliente_errado(create_client_wrong)
+        response=Users.post('/clients', body:create_client_wrong.to_json)
           if response.code == 201  
             response_body = JSON.parse(response.body)
             $client_name = response_body['client']['nome']
@@ -47,6 +30,8 @@ end
             puts "Falha na criação do cliente. Código de status: #{response.code}"
           end
 end
+
+
         def buscar_client
         response=Users.get('/clients')
         if response.code == 200  
